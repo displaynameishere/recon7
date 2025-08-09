@@ -1,24 +1,31 @@
 # recon7
 A powerful and modular recon swiss army knife made in Python.
-
-***DISCALIMER: Intended for educational/legal purposes ONLY. Don't misuse it.***
 ## Features
-recon7 has a range of features that make it easy to work with and extend
 ### Modular config
-We use a simple, custom configuration language (7cfg) built to make it easy to organize typed values, targets, secrets, and more. Here's an example:
+recon7 uses a simple, custom configuration language (7cfg) built to make it easy to organize theming, secrets, constants, and more. Here's an example:
 ```js
-// default (preconfed) targets
-target:url "https://example.com" "Example URL"
-target:domain "example.com" "Example domain"
-target:ip "1.2.3.4" "Example IP"
 // basically string values
 secret:api-ninjas "a1b2c3d4e5f6"
 // numbers (ints and floats)
 num:req-wait 1000
+// theming!
+theme:bg #000000
+theme:fg #00FF00
+theme:accent #FF0000
 ```
-In addition, the `sevenconfig` module included in the code makes it easy to integrate recon7 config files into other (Python-based) software.
 ### TUI
 <img src="images/themedtui.png" alt="Themed TUI" width="250" style="margin-right:30px"/>
 <img src="images/themedtui2.png" alt="Themed TUI" width="250"/>
 
-recon7 uses a fully themable TUI that gives it a number of advantages. While they have a steeper learning curve, they are much faster to operate for familiar users, additionally, most hackers and security researchers are already familiar with text based interfaces.
+recon7 uses a fully themable curses-based TUI that aims to be both intuitive and efficient for users
+### Hotswap Config
+recon7 supports hotswapping configs, just press `r` to reload
+### Backups
+recon7 makes backups of the last valid config when hotswapping and backs up target lists when making changes
+### Target Lock
+recon7 stores targets in a computer and human readable lockfile so targets are restored from the last session
+```bash
+target1 "192.168.1.1" "Internal LAN"
+mysite "example.com" "Example site"
+scan1 "http://example.com" "Landing page"
+```
